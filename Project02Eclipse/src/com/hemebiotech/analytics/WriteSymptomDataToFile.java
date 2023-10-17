@@ -1,35 +1,34 @@
 package com.hemebiotech.analytics;
 
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.Map;
 
 /**
- * Simple brute force implementation
+ * Write every symptom data and their count in a file with the file path given
  *
  */
 public class WriteSymptomDataToFile implements ISymptomWriter {
-	private String filepath;
+	private String filePath;
 
 	/**
 	 * 
-	 * @param filepath a full or partial path to file with symptom strings in it,
+	 * @param filePath a full or partial path to file with symptom strings in it,
 	 *                 one per line
 	 */
-	public WriteSymptomDataToFile(String filepath) {
-		this.filepath = filepath;
+	public WriteSymptomDataToFile(String filePath) {
+		this.filePath = filePath;
 	}
 
 	@Override
-	public void WriteSymptoms(Map<String, Integer> symptoms) {
-		if (filepath != null) {
-			try (FileWriter writer = new FileWriter("result.out")) {
+	public void writeSymptoms(Map<String, Integer> symptoms) {
+		if (filePath != null) {
+			try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
 				for (Map.Entry<String, Integer> entry : symptoms.entrySet()) {
 					writer.write(entry.getKey() + ": " + entry.getValue() + "\n");
 				}
-				writer.close();
-
 			} catch (Exception e) {
-				e.printStackTrace();
+				System.err.println("Error while writing file " + e.getMessage() + " caused by " + e.getCause());
 			}
 		}
 	}

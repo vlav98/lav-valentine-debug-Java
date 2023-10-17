@@ -1,11 +1,9 @@
 package com.hemebiotech.analytics;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class AnalyticsCounter {
 	private ISymptomReader reader;
@@ -17,7 +15,7 @@ public class AnalyticsCounter {
 	}
 
 	public List<String> getSymptoms() {
-		return reader.GetSymptoms();
+		return reader.getSymptoms();
 	}
 
 	public Map<String, Integer> countSymptoms(List<String> symptoms) {
@@ -31,21 +29,12 @@ public class AnalyticsCounter {
 	}
 
 	public Map<String, Integer> sortSymptoms(Map<String, Integer> symptoms) {
-		List<Map.Entry<String, Integer>> entryList = new ArrayList<>(symptoms.entrySet());
-		Collections.sort(entryList, (entry1, entry2) -> entry1.getKey().compareTo(entry2.getKey()));
-		Map<String, Integer> sortedSymptoms = new LinkedHashMap<>();
-
-		for (Map.Entry<String, Integer> entry : entryList) {
-			sortedSymptoms.put(entry.getKey(), entry.getValue());
-		}
+		TreeMap<String, Integer> sortedSymptoms = new TreeMap<String, Integer>(symptoms);
 
 		return sortedSymptoms;
 	}
 
 	public void writeSymptoms(Map<String, Integer> symptoms) {
-		writer.WriteSymptoms(symptoms);
-	}
-
-	public static void main(String args[]) throws Exception {
+		writer.writeSymptoms(symptoms);
 	}
 }

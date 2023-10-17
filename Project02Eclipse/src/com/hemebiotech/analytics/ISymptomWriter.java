@@ -15,5 +15,5 @@ public interface ISymptomWriter {
 	/**
 	 * Create a new file with all symptoms
 	 */
-	void WriteSymptoms(Map<String, Integer> symptoms);
+	void writeSymptoms(Map<String, Integer> symptoms);
 }
