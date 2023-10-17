@@ -8,7 +8,6 @@ import java.util.List;
 
 /**
  * Reads every symptom data from symptoms.txt
- *
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
 	private String filePath;
@@ -22,6 +21,11 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		this.filePath = filePath;
 	}
 
+	/**
+	 * Get list of symptoms by reading a file
+	 * 
+	 * @return list of symptoms
+	 */
 	@Override
 	public List<String> getSymptoms() {
 		List<String> result = new ArrayList<>();

@@ -6,7 +6,6 @@ import java.util.Map;
 
 /**
  * Write every symptom data and their count in a file with the file path given
- *
  */
 public class WriteSymptomDataToFile implements ISymptomWriter {
 	private String filePath;
@@ -20,6 +19,9 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
 		this.filePath = filePath;
 	}
 
+	/**
+	 * Write in a file every symptoms and their occurence value
+	 */
 	@Override
 	public void writeSymptoms(Map<String, Integer> symptoms) {
 		if (filePath != null) {
