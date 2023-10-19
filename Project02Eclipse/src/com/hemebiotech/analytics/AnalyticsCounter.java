@@ -46,9 +46,7 @@ public class AnalyticsCounter {
 	 * @return a map of every symptom sorted by name
 	 */
 	public Map<String, Integer> sortSymptoms(Map<String, Integer> symptoms) {
-		TreeMap<String, Integer> sortedSymptoms = new TreeMap<String, Integer>(symptoms);
-
-		return sortedSymptoms;
+		return new TreeMap<>(symptoms);
 	}
 
 	/**
