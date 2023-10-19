@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
+  private static final String INPUT_FILE = "Project02Eclipse/resources/symptoms.txt";
+  private static final String OUTPUT_FILE = "Project02Eclipse/resources/result.out";
+
   /**
    * @param args
    */
   public static void main(String[] args) {
-    ISymptomReader reader = new ReadSymptomDataFromFile("./Project02Eclipse/resources/symptoms.txt");
-    ISymptomWriter writer = new WriteSymptomDataToFile("./Project02Eclipse/resources/result.out");
+    ISymptomReader reader = new ReadSymptomDataFromFile(INPUT_FILE);
+    ISymptomWriter writer = new WriteSymptomDataToFile(OUTPUT_FILE);
 
     AnalyticsCounter counter = new AnalyticsCounter(reader, writer);
 
